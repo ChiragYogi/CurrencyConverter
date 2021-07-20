@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Currency Converter</string>
+    <string name="error">"Something went wrong Please Select Different Currency"</string>
+    <string name="convert">convert</string>
+    <string name="to">TO</string>
+    <string name="from">From</string>
+    <string name="enter_the_amount">Enter The Amount</string>
+    <string name="currency_converter">Currency Converter</string>
+
+    <string-array name="from_currency">
+        <item>CAD</item>
+        <item>EUR</item>
+        <item>INR</item>
+        <item>USD</item>
+    </string-array>
+
+    <string-array name="to_currency">
+        <item>INR</item>
+        <item>USD</item>
+        <item>CAD</item>
+        <item>EUR</item>
+    </string-array>
+</resources>
