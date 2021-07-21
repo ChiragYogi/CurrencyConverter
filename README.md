@@ -4,5 +4,10 @@ API Used In this Project :- https://api.exchangerate.host
 
 Retrofit For Making Network Request and Couroutine for working Asynchronous With Network Request 
 
-![IMG_20210621_191832_738](https://user-images.githubusercontent.com/36261180/126481646-7dfc42e0-5ee1-4c4f-a052-af65ac07dfda.jpg)
+![NoInternet](https://user-images.githubusercontent.com/36261180/126482493-629d3573-f6c0-4c54-9e48-28595779f7fb.jpg)
+
+![CC1](https://user-images.githubusercontent.com/36261180/126482515-82a624e7-f76e-4301-9122-78fd361910ef.jpg)
+
+![CC2](https://user-images.githubusercontent.com/36261180/126482530-6e551dfa-b4e6-4f21-bdea-f0fc86a7cb66.jpg)
+
 
