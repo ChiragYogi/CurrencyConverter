@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="convert">convert</string>
-    <string name="to">TO</string>
+    <string name="to">To</string>
     <string name="from">From</string>
     <string name="enter_the_amount">Enter The Amount</string>
     <string name="currency_converter">Currency Converter</string>

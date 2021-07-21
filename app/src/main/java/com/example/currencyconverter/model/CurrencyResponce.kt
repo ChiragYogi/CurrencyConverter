@@ -8,4 +8,4 @@ data class CurrencyResponce(
     val base: String,
     @SerializedName("rates")
     val rates: Rates
-    )
+)

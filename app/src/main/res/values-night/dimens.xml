@@ -5,4 +5,5 @@
     <dimen name="thirty_four">34sp</dimen>
     <dimen name="ten_start">10dp</dimen>
     <dimen name="twenty_four">24sp</dimen>
+    <dimen name="twenty_four_dp">24dp</dimen>
 </resources>

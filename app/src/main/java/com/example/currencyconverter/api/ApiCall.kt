@@ -8,9 +8,5 @@ import retrofit2.http.Query
 interface ApiCall {
 
     @GET("/latest")
-    suspend fun getAmountForBaseCurrency(
-        @Query("base")
-        base: String,
-
-    ):Response<CurrencyResponce>
+    suspend fun getAmountForBaseCurrency(@Query("base")base: String):Response<CurrencyResponce>
 }

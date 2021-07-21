@@ -11,7 +11,7 @@
         android:id="@+id/convertButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/sixteen_top"
+        android:layout_marginTop="@dimen/thirty_two"
         android:text="@string/convert"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.478"
@@ -100,7 +100,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/sixteen_top"
+        android:layout_marginTop="@dimen/thirty_two"
         android:hint="@string/enter_the_amount"
         app:errorEnabled="true"
         app:errorTextColor="@color/error_color"
@@ -112,7 +112,7 @@
             android:id="@+id/amountToConvertEt"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="number"/>
+            android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

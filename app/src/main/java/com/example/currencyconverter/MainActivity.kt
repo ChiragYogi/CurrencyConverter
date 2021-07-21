@@ -50,12 +50,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.convertButton.setOnClickListener {
 
-            hideSoftKeyboard()
 
+            hideSoftKeyboard()
 
             if (baseCurrency == toConvertCurrency) {
                 Toast.makeText(
-                    this@MainActivity, "Plese Select Different Currency",
+                    this@MainActivity, "Please Select Different Currency",
                     Toast.LENGTH_SHORT
                 ).show()
 
@@ -142,8 +142,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun convert(amount: String, fromCurrecy: String, toCurrecy: String) {
 
-      /*  finalAmountToDisplay = binding.finalAMountTxt*/
+
         val fromAmount = amount.toFloatOrNull()
+
         if (fromAmount == null) {
             Toast.makeText(
                 this@MainActivity, "Please Enter The Amount",
@@ -152,10 +153,11 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
+        // if device has internet connection then the we request for api if there is no internet
+        // connection then we show a SnackBar which have action to go to Setting Screen
+        if (haseInterNetConnection()){
+
         GlobalScope.launch(Dispatchers.Main) {
-
-            if (haseInterNetConnection()) {
-
 
             val responce = withContext(Dispatchers.IO)
             { ApiClient.api.getAmountForBaseCurrency(fromCurrecy) }
@@ -169,19 +171,22 @@ class MainActivity : AppCompatActivity() {
 
                             val fromBaseCurrencyRates = it!!.rates
 
+
+                            // getting the rates of currency based on base currency
                             val convertToSelectedCurrencyRate =
                                 getRateForCurrency(toCurrecy, fromBaseCurrencyRates)
 
+                            // converting the currency using math round fun in kotlin
                             val convertedCurrency =
-                                round(
-                                    fromAmount * convertToSelectedCurrencyRate.toString()
-                                        .toFloat() * 100
-                                ) / 100
-                            /*    ((fromAmount.times(
-                                convertToSelectedCurrencyRate!!.toString().toFloat()
-                            )) * 100).roundToLong() / 100*/
+                                round(fromAmount * convertToSelectedCurrencyRate.toString()
+                                        .toFloat() * 100) / 100
+
+
 
                             finalAmountToDisplay.text = convertedCurrency.toString()
+
+
+
 
                             Log.d("debug log", "$convertedCurrency")
 
@@ -189,23 +194,20 @@ class MainActivity : AppCompatActivity() {
 
                     } else {
 
-                        Toast.makeText(this@MainActivity, "Somthinge Went Wrong",
+                        Toast.makeText(this@MainActivity, "Something Went Wrong",
                             Toast.LENGTH_SHORT) .show()
                     }
 
                 } catch (e: Exception) {
-                    when(e){
-                        is NumberFormatException  -> {
-                            finalAmountToDisplay.text = R.string.error.toString()
-                        }
-                    }
 
+                    Toast.makeText(applicationContext,"$e",Toast.LENGTH_SHORT).show()
 
 
                 }
 
 
-            }else{
+            } }else{
+
                 Snackbar.make(findViewById(R.id.currency),"Please Check Your Internet Connection",
                     Snackbar.LENGTH_SHORT).setAction("OPEN") {
                     startActivity(Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS))
@@ -215,19 +217,19 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
-    }
 
 
+    //fun to get Rates based on currency code
     private fun getRateForCurrency(currency: String, rates: Rates) = when (currency) {
 
         "CAD" -> rates.cAD
-
+        "EUR" -> rates.eUR
         "INR" -> rates.iNR
         "USD" -> rates.uSD
         else -> null
     }
 
-
+    // checking for Internet connection
     private fun haseInterNetConnection(): Boolean {
 
         val cm = applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE)
@@ -263,12 +265,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+    // saving state of finalAmount
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
         outState.putString("Converted_Amount", finalAmountToDisplay.text.toString())
     }
 
+    // restoring state of finalAmount
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
 
@@ -278,6 +283,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    //hiding the keyboard
     private fun hideSoftKeyboard(){
 
         val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
